@@ -60,3 +60,4 @@
 <script src="../js/homepage.js"></script>
 <script src="../js/ResExt.js"></script>
 <script src="../js/ESUCampuses.js"></script>
+<script src="../js/search.js"></script>

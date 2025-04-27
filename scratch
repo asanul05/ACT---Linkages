@@ -56,3 +56,82 @@
             <button class="page-button">3</button>
         </div>
     </section>
+
+
+
+
+
+
+    /// working search
+    <section class="our-partners">
+    <div><h1 class="our-partners-h1">Our Partners</h1></div>
+    
+    <!-- Categories -->
+    <div class="our-partners-category-cont">
+        <button class="active" data-category="all" onclick="filterPartners('all')">All Partners</button>
+        <div class="divider"></div>
+        <button data-category="international" onclick="filterPartners('international')">International</button>
+        <div class="divider"></div>
+        <button data-category="national" onclick="filterPartners('national')">National</button>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="search-container">
+        <form method="GET" action="">
+            <input type="text" name="search" class="search-input" placeholder="Search partners by name or country..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div class="filter-container">
+        <form method="GET" action="">
+            <select name="type" class="filter-select">
+                <option value="all" <?php echo (isset($_GET['type']) && $_GET['type'] == 'all') ? 'selected' : ''; ?>>All Types</option>
+                <option value="national" <?php echo (isset($_GET['type']) && $_GET['type'] == 'national') ? 'selected' : ''; ?>>National</option>
+                <option value="international" <?php echo (isset($_GET['type']) && $_GET['type'] == 'international') ? 'selected' : ''; ?>>International</option>
+            </select>
+        </form>
+    </div>
+
+    <!-- Partners Grid -->
+    <div class="partners-grid">
+        <?php
+        // Static array to simulate partner data
+        $partners = [
+            ["name" => "Huawei PH", "location" => "Taguig City, Metro Manila, Philippines", "type" => "national", "logo" => "huawei.png"],
+            ["name" => "SEAMEO Innotech", "location" => "Quezon City, Philippines", "type" => "international", "logo" => "seameo.png"],
+            ["name" => "University of North Carolina", "location" => "Charlotte, USA", "type" => "international", "logo" => "unc.png"],
+            ["name" => "University of California", "location" => "Los Angeles, USA", "type" => "international", "logo" => "uc.png"],
+            ["name" => "Saint John Hospital", "location" => "Los Angeles, USA", "type" => "international", "logo" => "sjh.png"],
+            ["name" => "Wadhwani Foundation", "location" => "California, USA", "type" => "international", "logo" => "wadhwani.png"],
+            ["name" => "British Council", "location" => "London, United Kingdom", "type" => "international", "logo" => "british-council.png"],
+            ["name" => "International Alert", "location" => "London, United Kingdom", "type" => "international", "logo" => "alert.png"],
+            ["name" => "La Universidad Catolica", "location" => "Mexico City, Mexico", "type" => "international", "logo" => "catolica.png"],
+            ["name" => "University of La Laguna", "location" => "Canary Islands, Spain", "type" => "international", "logo" => "laguna.png"]
+        ];
+
+        // Filter logic
+        $search = isset($_GET['search']) ? strtolower($_GET['search']) : '';
+        $type = isset($_GET['type']) ? $_GET['type'] : 'all';
+
+        foreach ($partners as $partner) {
+            if (($type === 'all' || $partner['type'] === $type) &&
+                (empty($search) || strpos(strtolower($partner['name']), $search) !== false || strpos(strtolower($partner['location']), $search) !== false)) {
+                echo '<div class="partner-card">';
+                echo '<img src="../imgs/' . $partner['logo'] . '" alt="' . htmlspecialchars($partner['name']) . '">';
+                echo '<h3>' . htmlspecialchars($partner['name']) . '</h3>';
+                echo '<p>' . htmlspecialchars($partner['location']) . '</p>';
+                echo '<span class="partner-type ' . htmlspecialchars($partner['type']) . '">' . ucfirst(htmlspecialchars($partner['type'])) . '</span>';
+                echo '</div>';
+            }
+        }
+        ?>
+    </div>
+
+    <!-- Pagination (Static Example) -->
+    <div class="pagination">
+        <button class="page-button active">1</button>
+        <button class="page-button">2</button>
+        <button class="page-button">3</button>
+    </div>
+</section>
