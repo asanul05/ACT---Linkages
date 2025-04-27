@@ -1,0 +1,58 @@
+<section class="our-partners">
+        <div><h1 class="our-partners-h1">Our Partners</h1></div>
+        
+        <div class="our-partners-category-cont">
+            <button class="active" data-category="all">All Partners</button>
+            <div class="divider"></div>
+            <button data-category="international">International</button>
+            <div class="divider"></div>
+            <button data-category="national">National</button>
+        </div>
+    
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search partners by name or country...">
+            <button class="search-button">Search</button>
+        </div>
+    
+        <div class="filter-container">
+            <button class="filter-button">Filter By:</button>
+            <select class="filter-select" id="type-filter">
+                <option value="all">All Types</option>
+                <option value="national">National</option>
+                <option value="international">International</option>
+            </select>
+            <select class="filter-select" id="region-filter">
+                <option value="all">All Regions</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="america">America</option>
+            </select>
+        </div>
+    
+        <div class="partners-grid">
+            <!-- Dynamic Partner Cards Will Be Rendered Here -->
+            <?php
+            // Example PHP Code to Fetch Partners
+            $partners = [
+                ["name" => "Huawei PH", "location" => "Taguig City, Metro Manila, Philippines", "type" => "national", "logo" => "huawei.png"],
+                ["name" => "SEAMEO Innotech", "location" => "Quezon City, Philippines", "type" => "international", "logo" => "seameo.png"],
+                // Add more partners here
+            ];
+    
+            foreach ($partners as $partner) {
+                echo '<div class="partner-card">';
+                echo '<img src="' . $partner['logo'] . '" alt="' . $partner['name'] . '">';
+                echo '<h3>' . $partner['name'] . '</h3>';
+                echo '<p>' . $partner['location'] . '</p>';
+                echo '<span class="partner-type ' . $partner['type'] . '">' . ucfirst($partner['type']) . '</span>';
+                echo '</div>';
+            }
+            ?>
+        </div>
+    
+        <div class="pagination">
+            <button class="page-button active">1</button>
+            <button class="page-button">2</button>
+            <button class="page-button">3</button>
+        </div>
+    </section>
