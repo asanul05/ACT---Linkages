@@ -574,7 +574,7 @@
 
 .partner-card-content {
     flex-direction: column; 
-    flex: 1; Take up remaining space
+    flex: 1; /*Take up remaining space*/
     /* background-color: pink; */
 }
 
