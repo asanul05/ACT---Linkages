@@ -136,92 +136,121 @@
 
 
     <section class="our-partners">
-    <div><h1 class="our-partners-h1">Our Partners<c:\Users\Asanul\Downloads\huawei-logo.png/h1></div>
-    
-    <!-- Categories -->
-     <div class='partners-category-subsect'>
-        <div class="our-partners-category-cont">
-            <button class="active" data-category="all" onclick="filterPartners('all')">All Partners</button>
-            <div class="divider"></div>
-            <button data-category="international" onclick="filterPartners('international')">International</button>
-            <div class="divider"></div>
-            <button data-category="national" onclick="filterPartners('national')">National</button>
-        </div>
-     </div>
-    
-
-    <!-- Search -->
-     <div class='search-subsect'>
-        <div class="search-container-and-icon">
-            <div class='search-icon'><img src="../imgs/icon-search.png" alt=""></div>
-            <div class="search-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Search partners by name or country..." onkeyup="searchPartners()">
+        <div><h1 class="our-partners-h1">Our Partners<c:\Users\Asanul\Downloads\huawei-logo.png/h1></div>
+        
+        <!-- Categories -->
+        <div class='partners-category-subsect'>
+            <div class="our-partners-category-cont">
+                <button class="active" data-category="all" onclick="filterPartners('all')">All Partners</button>
+                <div class="divider"></div>
+                <button data-category="international" onclick="filterPartners('international')">International</button>
+                <div class="divider"></div>
+                <button data-category="national" onclick="filterPartners('national')">National</button>
             </div>
         </div>
-        <div>
-            <button class='search-partner-button'>Search</button>
+        
+
+        <!-- Search -->
+        <div class='search-subsect'>
+            <div class="search-container-and-icon">
+                <div class='search-icon'><img src="../imgs/icon-search.png" alt=""></div>
+                <div class="search-container">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search partners by name or country..." onkeyup="searchPartners()">
+                </div>
+            </div>
+            <div>
+                <button class='search-partner-button'>Search</button>
+            </div>
         </div>
-     </div>
-     
-    
+        
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="filter-by">
+                <img src="../imgs/icon-filter.png" alt="Filter Icon">
+                <span>Filter By:</span>
+            </div>
+            <div class="filter-dropdowns">
+                <select id="filter-type" class="filter-dropdown" onchange="filterPartnersByType()">
+                    <option value="all">All Types</option>
+                    <option value="international">International</option>
+                    <option value="national">National</option>
+                </select>
+                <select id="filter-region" class="filter-dropdown" onchange="filterPartnersByRegion()">
+                    <option value="all">All Regions</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="america">America</option>
+                </select>
+            </div>
+        </div>
+        
 
-    <!-- Partners Grid -->
-    <div class="partners-grid" id="partners-grid">
-        <?php
-        // Database connection
-        $conn = new mysqli("localhost", "root", "", "linkages");
+        <!-- Partners Grid -->
+        <div class="partners-grid" id="partners-grid">
+            <?php
+            $conn = new mysqli("localhost", "root", "", "linkages");
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Pagination variables
-        $limit = 12; // 3 columns x 4 rows
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $offset = ($page - 1) * $limit;
-
-        // Fetch partners
-        $query = "SELECT * FROM partners LIMIT $limit OFFSET $offset";
-        $result = $conn->query($query);
-
-        // Render partners
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="partner-card">';
-                echo '<img src="../imgs/' . $row['logo'] . '" alt="' . htmlspecialchars($row['name']) . '">';
-                echo '<h3>' . htmlspecialchars($row['name']) . '</h3>';
-                echo '<p>' . htmlspecialchars($row['location']) . '</p>';
-                echo '<span class="partner-type ' . htmlspecialchars($row['type']) . '">' . ucfirst(htmlspecialchars($row['type'])) . '</span>';
-                echo '</div>';
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
-        } else {
-            echo '<p>No partners found.</p>';
-        }
 
-        $conn->close();
-        ?>
-    </div>
+            //Pagination variables
+            $limit = 12; // 3 columns x 4 rows
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $offset = ($page - 1) * $limit;
 
-    <!-- Pagination -->
-    <div class="pagination">
-        <?php
-        // Fetch total number of partners
-        $conn = new mysqli("localhost", "root", "", "linkages");
-        $totalQuery = "SELECT COUNT(*) AS total FROM partners";
-        $totalResult = $conn->query($totalQuery);
-        $totalRow = $totalResult->fetch_assoc();
-        $totalPages = ceil($totalRow['total'] / $limit);
+            // Fetch partners
+            $query = "SELECT * FROM partners LIMIT $limit OFFSET $offset";
+            $result = $conn->query($query);
 
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<button class="page-button ' . ($i == $page ? 'active' : '') . '" onclick="loadPage(' . $i . ')">' . $i . '</button>';
-        }
+            //Render partners
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                        echo '<div class="partner-card">';
+                        echo '<img src="../imgs/' . $row['logo'] . '" alt="' . htmlspecialchars($row['name']) . '">';
+                        echo '<div class="partner-card-content">';
+                            echo '<h3>' . htmlspecialchars($row['name']) . '</h3>';
+                            echo '<p>' . htmlspecialchars($row['location']) . '</p>';
+                            echo '<span class="partner-type ' . htmlspecialchars($row['type']) . '">' . ucfirst(htmlspecialchars($row['type'])) . '</span>';
+                        echo '</div>';
+                        echo '</div>';
+                }
+                
+            } else {
+                echo '<p>No partners found.</p>';
+            }
 
-        $conn->close();
-        ?>
-    </div>
-    
-</section>
+            $conn->close();
+            ?>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php
+            $conn = new mysqli("localhost", "root", "", "linkages");
+
+            // Fetch total number of partners
+            $totalQuery = "SELECT COUNT(*) AS total FROM partners";
+            $totalResult = $conn->query($totalQuery);
+            $totalRow = $totalResult->fetch_assoc();
+            $totalPages = ceil($totalRow['total'] / $limit);
+
+            // Previous Arrow
+            echo '<button class="page-button" onclick="loadPage(' . max(1, $page - 1) . ')">&lt;</button>';
+
+            // Page Numbers
+            for ($i = 1; $i <= $totalPages; $i++) {
+                echo '<button class="page-button ' . ($i == $page ? 'active' : '') . '" onclick="loadPage(' . $i . ')">' . $i . '</button>';
+            }
+
+            // Next Arrow
+            echo '<button class="page-button" onclick="loadPage(' . min($totalPages, $page + 1) . ')">&gt;</button>';
+
+            $conn->close();
+            ?>
+        </div>
+        
+    </section>
 
     <section class="become-a-partner">
         <div class="become-a-partner-container">
