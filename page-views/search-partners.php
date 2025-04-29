@@ -43,7 +43,7 @@ $result = $conn->query($query);
 // Render partners
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="partner-card">';
+        echo '<div class="partner-card" data-id="' . $row['id'] . '">';
         echo '<img src="../imgs/' . $row['logo'] . '" alt="' . htmlspecialchars($row['name']) . '">';
         echo '<div class="partner-card-content">';
             echo '<h3>' . htmlspecialchars($row['name']) . '</h3>';

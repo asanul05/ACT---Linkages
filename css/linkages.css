@@ -93,11 +93,12 @@
 
 .Linkages-Gallery {
     width: 100vw;
-    height: 600px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .Linkages-GalleryCont {

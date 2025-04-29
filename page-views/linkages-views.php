@@ -28,7 +28,7 @@
         </div>
     </div>
 </section>
-<section class="Linkages-Gallery">
+<!-- <section class="Linkages-Gallery">
     <div class="Linkages-GalleryCont">
         <div class="Linkages-HoverableImage">
             <img class="Linkages-ImagesCarousel" src="../imgs/Admin-Office1.jpg" alt="">
@@ -37,7 +37,7 @@
             <img class="Linkages-ImagesCarousel" src="../imgs/Admin.jpg" alt="">
         </div>
     </div>
-</section>
+</section> -->
 
 <section class="Linkages-Office">
     <div class="LinkagesContent">
@@ -48,7 +48,7 @@
             <p>The External Linkages and International Relationos Office (ELIRO) is mandated to establish partnership with agencies, industries, and objectives of the Western Mindanao State University (WMSU) as a “Smart Research University by 2040”. Moreover, the office provides a platform for exploratory discussions on all possible areas of collaboration, tie-up programs, twinning project undertakings, and other linkage arrangements between WMSU and other related agencies at the local, national and international level established through a Memorandum of Understanding and/ or Agreement.</p>
         </div>
     </div>
-    <div class="Linkages-OfficeBtn inter-semibold">Learn More ></div>
+    <div class="Linkages-OfficeBtn inter-semibold"> <a href="../page/ExternalRelationsOffice.php">Learn More ></a></div>
 </section>
 <section class="Linkages-Partners">
     <div class="Partners-LeftBox">
@@ -57,7 +57,7 @@
             <div class="Partners-ContentText">
                 <p class="Partners-Title inter-black">Philippines Based</p>
                 <p class="Partners-SubTitle inter-bold">Institutional Linkages & Partners</p>
-                <div class="Partners-Button">Learn More ></div>
+                <div class="Partners-Button"><a href="../page/phBased.php">See More ></a></div>
             </div>
         </div>
     </div>
@@ -129,6 +129,6 @@
 </section>
 <section class="Globe-Section">
     <p class="Globe-Subtext">Click the "See More" button to view the full list of WMSU's international partners and linkages.</p>
-    <div class="Globe-Btn">See More ></div>
+    <div class="Globe-Btn"><a href="../../LinkagesEliezerOrig/link2.php">See More ></a></div>
 </section>
 <!-- Created by Hans Adrian Lao -->

@@ -13,6 +13,9 @@ function searchPartners() {
 }
 
 function loadPage(page) {
+    const type = document.getElementById('filter-type').value;
+    const region = document.getElementById('filter-region').value;
+
     // Send AJAX request for pagination
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `../page-views/search-partners.php?page=${page}`, true);
