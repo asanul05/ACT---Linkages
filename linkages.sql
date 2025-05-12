@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2025 at 08:39 AM
+-- Generation Time: Apr 29, 2025 at 11:14 AM
 -- Server version: 11.4.5-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `partners` (
   `name` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `type` enum('national','international') NOT NULL,
-  `region` enum('asia','europe','america') NOT NULL,
+  `region` enum('asia','europe','america','africa','australia','antarctica') NOT NULL,
   `logo` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `partnership_since` year(4) DEFAULT NULL,
@@ -70,7 +70,7 @@ INSERT INTO `partners` (`id`, `name`, `location`, `type`, `region`, `logo`, `des
 (24, 'iLAB (CHED)', 'Quezon City, Philippines', 'national', 'asia', 'logo-ilab-ched.png', NULL, NULL, NULL),
 (25, 'Interliserve Global Resources, Inc', 'Quezon City, Philippines', 'national', 'asia', 'logo-interliserve-global.png', NULL, NULL, NULL),
 (26, 'PCAARRD', 'Taguig, Metro Manila', 'national', 'asia', 'logo-pcaarrd.png', NULL, NULL, NULL),
-(27, 'Huawei PH', 'Taguig City, Metro Manila, Philippines', 'national', 'asia', 'logo-huawei.png', 'an exciting collaboration that typically focuses on technology development, digital skills training, and research initiatives in the field of information and communication technology (ICT). Such collaborations are part of a broader push to improve the Philippines’ ICT capabilities and develop a workforce that can thrive in the fast-evolving technology landscape. With Huawei\'s expertise and WMSU’s commitment to education, this partnership could create a pipeline of skilled professionals who are well-prepared for careers in tech. ', NULL, NULL);
+(27, 'Huawei PH', 'Taguig City, Metro Manila, Philippines', 'national', 'asia', 'logo-huawei.png', 'an exciting collaboration that typically focuses on technology development, digital skills training, and research initiatives in the field of information and communication technology (ICT). Such collaborations are part of a broader push to improve the Philippines’ ICT capabilities and develop a workforce that can thrive in the fast-evolving technology landscape. With Huawei\'s expertise and WMSU’s commitment to education, this partnership could create a pipeline of skilled professionals who are well-prepared for careers in tech. ', '2025', '');
 
 --
 -- Indexes for dumped tables
@@ -90,7 +90,7 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

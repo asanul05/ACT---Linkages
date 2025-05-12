@@ -90,6 +90,9 @@ $result = $conn->query($query);
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
             <option value="america">America</option>
+            <option value="africa">Africa</option>
+            <option value="australia">Australia</option>
+            <option value="antartica">Antartica</option>
         </select><br>
 
         <label for="logo">Logo (File Path):</label>
@@ -172,6 +175,9 @@ $result = $conn->query($query);
             <option value="asia" <?php echo $editRow['region'] === 'asia' ? 'selected' : ''; ?>>Asia</option>
             <option value="europe" <?php echo $editRow['region'] === 'europe' ? 'selected' : ''; ?>>Europe</option>
             <option value="america" <?php echo $editRow['region'] === 'america' ? 'selected' : ''; ?>>America</option>
+            <option value="africa" <?php echo $editRow['region'] === 'africa' ? 'selected' : ''; ?>>Africa</option>
+            <option value="australia" <?php echo $editRow['region'] === 'australia' ? 'selected' : ''; ?>>Australia</option>
+            <option value="antartica" <?php echo $editRow['region'] === 'antartica' ? 'selected' : ''; ?>>Antartica</option>
         </select><br>
 
         <label for="logo">Logo (File Path):</label>
@@ -190,4 +196,4 @@ $result = $conn->query($query);
     </form>
     <?php endif; ?>
 </body>
-</html>
+</html> 

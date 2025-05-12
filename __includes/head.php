@@ -21,6 +21,7 @@
         <?php require_once '../css/ero.css'; ?>
         <?php require_once '../css/ExternalRelationsOffice.css'; ?>
         <?php require_once '../css/manage-partner.css'; ?>
+        <?php require_once '../css/dashboard.css'; ?>
         
         
     </style>
